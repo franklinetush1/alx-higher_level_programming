@@ -1,10 +1,6 @@
 #!/usr/bin/python3
 def element_at(my_list, idx):
-    """Retreives an element from a list"""
-    length = len(my_list)
-    if idx <= length:
-        return(my_list[idx])
-    elif idx < 0:
-        return(my_list)
-    else:
-        return(my_list)
+    """Retrive an element from a list."""
+    if idx < 0 or idx > (len(my_list) - 1):
+        return None
+    return (my_list[idx])
