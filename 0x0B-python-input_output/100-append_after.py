@@ -4,11 +4,12 @@
 def append_after(filename="", search_string="", new_string=""):
     """Insert text after each line containing a given string in a file.
     """
-    txt = ""
-    with open(filename) as r:
-        for line in r:
-            txt += line
-            if search_string in line:
-                txt += new_string
-    with open(filename, "w") as w:
-        w.write(txt)
+    app = []
+    with open(filename, 'r', encoding="utf-8") as ne:
+        for line in ne:
+            app += [line]
+            if line.find(search_string) != -1:
+                app += [new_string]
+
+    with open(filename, 'w', encoding="utf-8") as ne:
+        ne.write("".join(app))
