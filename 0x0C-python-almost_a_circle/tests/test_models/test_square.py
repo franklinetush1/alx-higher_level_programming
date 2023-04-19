@@ -70,7 +70,7 @@ class TestSquareMethods(unittest.TestCase):
         new = Square(1)
         with self.assertRaises(AttributeError):
             new.__width
-    
+
     def capture_stdout(sq, method):
         """Captures and returns text printed to stdout."""
         capture = io.StringIO()
@@ -99,7 +99,7 @@ class TestSquareMethods(unittest.TestCase):
         new = Square(1)
         with self.assertRaises(AttributeError):
             new.__y
-    
+
     def test_update_4(self):
         """ Test update method """
         s1 = Square(10)
@@ -129,7 +129,7 @@ class TestSquareMethods(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             sq1.update(**dic)
-    
+
     def test_to_dictionary(self):
         """ Test dictionary returned """
         s1 = Square(1, 2, 3)
@@ -150,7 +150,7 @@ class TestSquareMethods(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as str_out:
             print(type(s1.to_dictionary()))
             self.assertEqual(str_out.getvalue(), res)
-    
+
     def test_create_4(self):
         """ Test create method """
         dictionary = {'id': 89, 'size': 1, 'x': 2, 'y': 3}
@@ -159,7 +159,7 @@ class TestSquareMethods(unittest.TestCase):
         self.assertEqual(s1.size, 1)
         self.assertEqual(s1.x, 2)
         self.assertEqual(s1.y, 3)
-    
+
     def test_value_square(self):
         """ Test value pased to Square """
         with self.assertRaises(ValueError):
@@ -198,7 +198,7 @@ class TestSquareMethods(unittest.TestCase):
             res2 = file.read()
 
         self.assertEqual(res, res2)
-    
+
     def test_to_dictionary_no_object_changes(self):
         s1 = Square(10, 2, 1, 2)
         s2 = Square(1, 2, 10)

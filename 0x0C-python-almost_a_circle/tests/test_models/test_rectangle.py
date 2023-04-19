@@ -33,7 +33,7 @@ class TestRectangleMethods(unittest.TestCase):
         """ Test error raised with no args passed """
         with self.assertRaises(TypeError):
             new = Rectangle()
-    
+
     def test_new_rectangle_2(self):
         """ Test new rectangle with all attrs """
         new = Rectangle(2, 3, 5, 5, 4)
@@ -65,7 +65,7 @@ class TestRectangleMethods(unittest.TestCase):
         """ pass a string value """
         with self.assertRaises(TypeError):
             new = Rectangle("2", 2, 2, 2, 2)
-    
+
     def test_access_private_attrs_2(self):
         """ access to a private attribute """
         new = Rectangle(1, 1)
@@ -76,12 +76,12 @@ class TestRectangleMethods(unittest.TestCase):
         """ Trying to pass a string value """
         with self.assertRaises(TypeError):
             new = Rectangle(2, "2", 2, 2, 2)
-    
+
     def test_is_Base_instance(self):
         """ Test Rectangle is a Base instance """
         new = Rectangle(1, 1)
         self.assertEqual(True, isinstance(new, Base))
-    
+
     def test_new_rectangles(self):
         """ Test new rectangles """
         new = Rectangle(1, 1)
@@ -253,7 +253,7 @@ class TestRectangleMethods(unittest.TestCase):
         self.assertEqual(r1.id, 89)
         self.assertEqual(r1.width, 1)
         self.assertEqual(r1.height, 2)
-    
+
     def test_None_width(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Rectangle(None, 2)
@@ -278,7 +278,6 @@ class TestRectangleMethods(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Rectangle(True, 2)
 
-
     def test_create_4(self):
         """ Test create method """
         dictionary = {'id': 89, 'width': 1, 'height': 2, 'x': 3}
@@ -287,7 +286,7 @@ class TestRectangleMethods(unittest.TestCase):
         self.assertEqual(r1.width, 1)
         self.assertEqual(r1.height, 2)
         self.assertEqual(r1.x, 3)
-    
+
     def test_height_getter(self):
         r = Rectangle(5, 7, 7, 5, 1)
         self.assertEqual(7, r.height)

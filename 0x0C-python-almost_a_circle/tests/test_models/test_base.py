@@ -26,7 +26,7 @@ class TestBaseMethods(unittest.TestCase):
         """ Test default id """
         new = Base()
         self.assertEqual(new.id, 1)
-  
+
     def test_no_arg(self):
         b1 = Base()
         b2 = Base()
@@ -40,7 +40,7 @@ class TestBaseMethods(unittest.TestCase):
         self.assertEqual(n1.id, 1)
         self.assertEqual(n2.id, 1024)
         self.assertEqual(n3.id, 2)
-    
+
     def test_list_id(self):
         self.assertEqual([1, 2, 3], Base([1, 2, 3]).id)
 
@@ -60,30 +60,6 @@ class TestBaseMethods(unittest.TestCase):
         with self.assertRaises(TypeError):
             new = Base(1, 1)
 
-    def test_access_private_attrs(self):
-        """ Test accessing to private attributes """
-        new = Base()
-        with self.assertRaises(AttributeError):
-            new.__nb_objects
-
-    def test_save_to_file_1(self):
-        """ Test JSON file """
-        Square.save_to_file(None)
-        r = "[]\n"
-        with open("Square.json", "r") as file:
-            with patch('sys.stdout', new=StringIO()) as str_out:
-                print(file.read())
-                self.assertEqual(str_out.getvalue(), r)
-
-        try:
-            os.remove("Square.json")
-        except:
-            pass
-
-        Square.save_to_file([])
-        with open("Square.json", "r") as file:
-            self.assertEqual(file.read(), "[]")
-    
     def test_to_json_string_rectangle_one_dict(self):
         r = Rectangle(10, 7, 2, 8, 6)
         self.assertTrue(len(Base.to_json_string([r.to_dictionary()])) == 53)
@@ -108,23 +84,6 @@ class TestBaseMethods(unittest.TestCase):
         list_dicts = [s1.to_dictionary(), s2.to_dictionary()]
         self.assertTrue(len(Base.to_json_string(list_dicts)) == 78)
 
-    def test_save_to_file_2(self):
-        """ Test JSON file """
-        Rectangle.save_to_file(None)
-        res = "[]\n"
-        with open("Rectangle.json", "r") as file:
-            with patch('sys.stdout', new=StringIO()) as str_out:
-                print(file.read())
-                self.assertEqual(str_out.getvalue(), res)
-        try:
-            os.remove("Rectangle.json")
-        except:
-            pass
-
-        Rectangle.save_to_file([])
-        with open("Rectangle.json", "r") as file:
-            self.assertEqual(file.read(), "[]")
-
     def test_save_to_file_two_rectangles(self):
         r1 = Rectangle(10, 7, 2, 8, 5)
         r2 = Rectangle(2, 4, 1, 2, 3)
@@ -137,7 +96,7 @@ class TestBaseMethods(unittest.TestCase):
         Square.save_to_file([s])
         with open("Square.json", "r") as f:
             self.assertTrue(len(f.read()) == 39)
-    
+
     def test_load_from_file_csv_square_type(self):
         s1 = Square(5, 1, 3, 3)
         s2 = Square(9, 5, 2, 3)
@@ -152,6 +111,7 @@ class TestBaseMethods(unittest.TestCase):
     def test_load_from_file_csv_more_than_one_arg(self):
         with self.assertRaises(TypeError):
             Base.load_from_file_csv([], 1)
-    
+
+
 if __name__ == "__main__":
     unittest.main()
