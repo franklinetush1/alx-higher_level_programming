@@ -5,7 +5,7 @@ module.exports = class Square extends require('./5-square.js') {
       super.print();
     } else {
       for (let x = 0; x < this.height; x++) {
-        console.log(c.repeat(this.width)); 
+        console.log(c.repeat(this.width));
       }
     }
   }
