@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""script that lists all states from the database hbtn_0e_0_usa"""
+"""lists all states with a name starting with N"""
 import sys
 import MySQLdb
 if __name__ == '__main__':
