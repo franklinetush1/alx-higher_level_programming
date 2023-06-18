@@ -14,4 +14,4 @@ if __name__ == '__main__':
     mycursor.execute(query, (state_name,))
     state = mycursor.fetchall()
     for item in state:
-        print(", ".join([item[1]]))
+        print(", ".join([item]))
