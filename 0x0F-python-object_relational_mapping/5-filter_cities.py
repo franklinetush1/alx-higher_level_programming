@@ -9,7 +9,8 @@ if __name__ == '__main__':
     mycursor = mydb.cursor()
     state_name = sys.argv[4]
     query = "SELECT cities.id, cities.name, states.name FROM cities \
-             JOIN states ON cities.state_id = states.id WHERE states.name = %s;"
+            INNER JOIN states ON cities.state_id = states.id WHERE \
+            states.name = %s ORDER BY cities.id ASC;"
     mycursor.execute(query, (state_name,))
     state = mycursor.fetchall()
     for item in state:
