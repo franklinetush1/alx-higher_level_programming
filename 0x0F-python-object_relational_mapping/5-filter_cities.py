@@ -11,4 +11,4 @@ if __name__ == '__main__':
                      WHERE states.name = '{}';".format(sys.argv[4]))
     state = mycursor.fetchall()
     for item in state:
-        print(", ".join([item[1])
+        print(", ".join([item[1]))
