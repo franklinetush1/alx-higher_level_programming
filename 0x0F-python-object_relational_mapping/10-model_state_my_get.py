@@ -6,14 +6,13 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 
 if __name__ == '__main__':
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
-                           format(sys.argv[1], sys.argv[2], sys.argv[3]),
-                           pool_pre_ping=True)
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(sys.argv[1],
+                           sys.argv[2], sys.argv[3]), pool_pre_ping=True)
 
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    result = session.query(State).filter(State.name == sys.argv[4]).first()
+    result = session.query(State).filter(State.name == sys.argv[4])
 
     if result is None:
         print("Not found")
