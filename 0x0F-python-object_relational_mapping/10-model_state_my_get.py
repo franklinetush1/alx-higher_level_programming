@@ -17,5 +17,5 @@ if __name__ == '__main__':
 
     if result is None:
         print("Not found")
-    for state in result:
+    else:
         print(state.id)
