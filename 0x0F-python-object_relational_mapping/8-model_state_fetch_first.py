@@ -15,5 +15,5 @@ if __name__ == '__main__':
 
     if result is None:
 		print("Nothing")
-	else:
+    else:
         print("{}: {}".format(state.id, state.name))
