@@ -1,5 +1,8 @@
+#!/usr/bin/python3
+"""Sends a POST request to http://0.0.0.0:5000"""
 import sys
 import requests
+
 
 letter = sys.argv[1] if len(sys.argv) > 1 else ""
 payload = {"q": letter}
