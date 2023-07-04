@@ -4,9 +4,9 @@ import sys
 import requests
 
 
-letter = sys.argv[1] if len(sys.argv) > 1 else ""
+letter = sys.argv[1] if len(sys.argv[1]) > 1 else ""
 payload = {"q": letter}
-resp = requests.post("http://0.0.0.0:5000/search_user", data=payload)
+resp = requests.post('http://0.0.0.0:5000/search_user', data=payload)
 
 try:
     js_response = resp.json()
