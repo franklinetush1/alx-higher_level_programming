@@ -5,10 +5,10 @@ import requests
 from requests.auth import HTTPBasicAuth
 
 
-if __name__ == "__main__":    
+if __name__ == "__main__":
     user = sys.argv[1]
     password = sys.argv[2]
-	APIurl = 'https://api.github.com/user'
-	auth = HTTPBasicAuth(user, password)
+    APIurl = 'https://api.github.com/user'
+    auth = HTTPBasicAuth(user, password)
     response = get(APIurl, auth=auth)
     print(response.json().get('id'))

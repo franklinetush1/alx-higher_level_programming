@@ -4,9 +4,10 @@ import urllib.request
 
 
 if __name__ == '__main__':
-    with urllib.request.urlopen('https://alx-intranet.hbtn.io/status') as response:
+    url = 'https://alx-intranet.hbtn.io/status'
+    with urllib.request.urlopen(url) as response:
         body = response.read()
-        utf8_decoded = body.decode('utf-8')    
+        utf8_decoded = body.decode('utf-8')
         print('Body response:')
         print('\t- type: {}'.format(type(body)))
         print('\t- content: {}'.format(body))

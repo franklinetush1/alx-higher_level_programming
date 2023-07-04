@@ -6,7 +6,7 @@ import sys
 
 if __name__ == "__main__":
     try:
-		arg = sys.argv[1]
+        arg = sys.argv[1]
         with request.urlopen(arg) as resp:
             body = resp.read()
             print(body.decode('utf-8'))
