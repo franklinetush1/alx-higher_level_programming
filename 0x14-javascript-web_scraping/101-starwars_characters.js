@@ -3,45 +3,33 @@
 const request = require('request');
 const apiUrl = 'https://swapi-api.alx-tools.com/api/films/';
 
-async function getCharactersFromMovie(movieId) {
-  try {
-    const response = await fetchMovieData(apiUrl);
-    const movies = JSON.parse(response.body).results;
-    const targetMovie = movies.find((movie) => movie.episode_id === movieId);
-    if (!targetMovie) {
-      console.error(`Movie with ID ${movieId} not found.`);
-      return;
+function getCharacterNames (movieId) {
+  const url = `${apiUrl}${movieId}/`;
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode === 200) {
+      const characters = JSON.parse(body).characters;
+      printCharacterNames(characters, 0);
+    } else {
+      console.error(`Error fetching data for movie with ID ${movieId}`);
     }
+  });
+}
 
-    const characterUrls = targetMovie.characters;
-    const characterNames = await fetchCharacterNames(characterUrls);
-    characterNames.forEach((name) => console.log(name));
-  } catch (error) {
-    console.error('Error:', error.message);
+function printCharacterNames (characters, index) {
+  if (index >= characters.length) {
+    return;
   }
-}
 
-function fetchMovieData(url) {
-  return new Promise((resolve, reject) => {
-    request(url, (error, response, body) => {
-      if (error) reject(error);
-      else resolve(response);
-    });
+  request(characters[index], function (error, response, body) {
+    if (!error && response.statusCode === 200) {
+      const characterName = JSON.parse(body).name;
+      console.log(characterName);
+      printCharacterNames(characters, index + 1);
+    } else {
+      console.error(`Error fetching character data: ${error}`);
+    }
   });
 }
 
-function fetchCharacterNames(characterUrls) {
-  return Promise.all(characterUrls.map(fetchCharacterName));
-}
-
-function fetchCharacterName(characterUrl) {
-  return new Promise((resolve, reject) => {
-    request(characterUrl, (error, response, body) => {
-      if (error) reject(error);
-      else resolve(JSON.parse(body).name);
-    });
-  });
-}
-
-const movieId = parseInt(process.argv[2], 10);
-getCharactersFromMovie(movieId);
+const movieId = process.argv[2];
+getCharacterNames(movieId);
