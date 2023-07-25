@@ -11,4 +11,3 @@ request(url)
   .on('error', (error) => {
     console.log('An error occurred:', error);
   });
-
