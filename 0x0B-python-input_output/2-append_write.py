@@ -2,13 +2,21 @@
 """Function that appends text to a file"""
 
 
-def append_write(filename="", text=""):
-    """function that appends text to a file
-    args:
-        filename:name of file to be written to
-        text:text to be written
-    returns:
-        the number of characters appended:"""
-    with open(filename, 'a', encoding='utf-8') as f:
-        no_of_chars = f.write(text)
-    return(no_of_chars)
+def canUnlockAll(boxes):
+    """
+     a method that determines if all the boxes can be opened.
+
+    :param boxes:
+    :return: True or False
+    """
+    if not boxes or type(boxes) is not list:
+        return False
+
+    unlocked = [0]
+    for n in unlocked:
+        for key in boxes[n]:
+            if key not in unlocked and key < len(boxes):
+                unlocked.append(key)
+    if len(unlocked) == len(boxes):
+        return True
+    return False
